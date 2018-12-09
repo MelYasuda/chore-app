@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  FlatList,
   View,
 } from 'react-native';
 import { WebBrowser } from 'expo';
@@ -13,28 +14,36 @@ import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
 
 export default class HomeScreen extends React.Component {
-  state = { 
-    "Sunday": [
+  state = {
+    choreList: [
       {
-        desc: "Laundry",
-        assignedName: "Meguru",
-        priority: "High",
-        note: "Use dry sheet"  
+        day : "Sunday",
+        chores : [
+          {
+            desc: "Laundry",
+            assignedName: "Meguru",
+            priority: "High",
+            note: "Use dry sheet"  
+          },
+          {
+            desc: "Doing the dishes",
+            assignedName: "Elton",
+            priority: "Medium",
+            note: "Use pods"  
+          },
+        ],
       },
       {
-        desc: "Doing the dishes",
-        assignedName: "Elton",
-        priority: "Medium",
-        note: "Use pods"  
-      },
-    ],
-    "Monday": [
-      {
-        desc: "Cook Dinner",
-        assignedName: "Meguru",
-        priority: "High",
-        note: "Make it yummy"  
-      },
+        day: "Monday",
+        chores : [
+          {
+            desc: "Cook Dinner",
+            assignedName: "Meguru",
+            priority: "High",
+            note: "Make it yummy"  
+          },
+        ]
+      }
     ]
   }
 
@@ -47,7 +56,10 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View>
-            <Text>Chore list</Text>
+            <FlatList
+              data={this.state.choreList}
+              renderItem={({item}) => <Text>{item.day}</Text>}
+            />
           </View>
         </ScrollView>
 
