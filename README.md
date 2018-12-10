@@ -18,17 +18,20 @@ It is a React Native application for managing chores. Users can use it to manage
 * The application navigates the user to Past Chore List" by tapping "Create New"
 * The application allows the user to add new chore to the Chore List or pick one of the chores from the list
 * The application allows the user to choose the chore by tapping the OK button on Past Chore List and navigate them to the New Chore screen
-* The application allows the user to
-
+* The application allows the user to create a new chore with description, assigned day and person, note and priority
+* The application allows the user to edit the chore detail
 
 ## Possible Additional Features
-* Google Maps search
+* Authenticate users and assign them chores
+* Email the person assigned their chores on the day
 
 ## Setup/Installation Requirements
-1. Clone the following repository: https://github.com/MelYasuda/tap-room-react
-2. On terminal, go to tap-room-react directory
+1. Clone the following repository: https://github.com/MelYasuda/chore-management
+2. On terminal, nativate to the chore-management directory
 3. Run "npm install"
-4. Run "npm run start"
+4. Run "npm run" (this will create an Expo QR code on terminal)
+5. Install Expo application on smartphone
+6. Scan the Expo QR code with your phone
 
 ## Known Bugs
 TBD
@@ -40,8 +43,8 @@ TBD
 * html
 * CSS
 * Javascript
-* React Library
-* Instagram API
+* React Native Library
+* Expo SDK
 * Bootstrap
 
 ### License
