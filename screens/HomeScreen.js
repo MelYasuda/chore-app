@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Image,
   Platform,
@@ -7,76 +7,124 @@ import {
   Text,
   TouchableOpacity,
   FlatList,
-  View,
-} from 'react-native';
-import { WebBrowser } from 'expo';
+  View
+} from "react-native";
+import { WebBrowser } from "expo";
+import { List, ListItem, Header } from "react-native-elements";
 
-import { MonoText } from '../components/StyledText';
+import { MonoText } from "../components/StyledText";
 
 export default class HomeScreen extends React.Component {
   state = {
     choreList: [
       {
-        day : "Sunday",
-        chores : [
+        day: "Sunday",
+        chores: [
           {
             desc: "Laundry",
             assignedName: "Meguru",
             priority: "High",
-            note: "Use dry sheet"  
+            note: "Use dry sheet"
           },
           {
             desc: "Doing the dishes",
             assignedName: "Elton",
             priority: "Medium",
-            note: "Use pods"  
-          },
-        ],
+            note: "Use pods"
+          }
+        ]
       },
       {
         day: "Monday",
-        chores : [
+        chores: [
           {
             desc: "Cook Dinner",
             assignedName: "Meguru",
             priority: "High",
-            note: "Make it yummy"  
-          },
+            note: "Make it yummy"
+          }
+        ]
+      },
+      {
+        day: "Tuesday",
+        chores: [
+          {
+            desc: "Cook Dinner",
+            assignedName: "Meguru",
+            priority: "High",
+            note: "Make it yummy"
+          }
+        ]
+      },
+      {
+        day: "Wednesday",
+        chores: [
+          {
+            desc: "Cook Dinner",
+            assignedName: "Meguru",
+            priority: "High",
+            note: "Make it yummy"
+          }
+        ]
+      },
+      {
+        day: "Thursday",
+        chores: [
+          {
+            desc: "Cook Dinner",
+            assignedName: "Meguru",
+            priority: "High",
+            note: "Make it yummy"
+          }
+        ]
+      },
+      {
+        day: "Friday",
+        chores: [
+          {
+            desc: "Cook Dinner",
+            assignedName: "Meguru",
+            priority: "High",
+            note: "Make it yummy"
+          }
+        ]
+      },
+      {
+        day: "Saturday",
+        chores: [
+          {
+            desc: "Cook Dinner",
+            assignedName: "Meguru",
+            priority: "High",
+            note: "Make it yummy"
+          }
         ]
       }
     ]
-  }
+  };
 
   static navigationOptions = {
-    header: null,
+    header: null
   };
 
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View>
-            <FlatList
-              data={this.state.choreList}
-              renderItem={({item}) => 
-              <Text>
-                {item.day}
-                <FlatList
-                data={item}
-                renderItem={}
-                />
-              </Text>}
+      <Header
+              centerComponent={{ text: "Chores", style: { color: "#fff" } }}
             />
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}
+        >
+          <View>
+            <List>
+              {this.state.choreList.map(chore => (
+                <ListItem key={chore.day} title={chore.day} />
+              ))}
+            </List>
           </View>
         </ScrollView>
-
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
-
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
-          </View>
-        </View>
       </View>
     );
   }
@@ -85,88 +133,88 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff"
   },
   developmentModeText: {
     marginBottom: 20,
-    color: 'rgba(0,0,0,0.4)',
+    color: "rgba(0,0,0,0.4)",
     fontSize: 14,
     lineHeight: 19,
-    textAlign: 'center',
+    textAlign: "center"
   },
   contentContainer: {
-    paddingTop: 30,
+    paddingTop: 30
   },
   welcomeContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: 10,
-    marginBottom: 20,
+    marginBottom: 20
   },
   welcomeImage: {
     width: 100,
     height: 80,
-    resizeMode: 'contain',
+    resizeMode: "contain",
     marginTop: 3,
-    marginLeft: -10,
+    marginLeft: -10
   },
   getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
+    alignItems: "center",
+    marginHorizontal: 50
   },
   homeScreenFilename: {
-    marginVertical: 7,
+    marginVertical: 7
   },
   codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)',
+    color: "rgba(96,100,109, 0.8)"
   },
   codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
+    backgroundColor: "rgba(0,0,0,0.05)",
     borderRadius: 3,
-    paddingHorizontal: 4,
+    paddingHorizontal: 4
   },
   getStartedText: {
     fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
+    color: "rgba(96,100,109, 1)",
     lineHeight: 24,
-    textAlign: 'center',
+    textAlign: "center"
   },
   tabBarInfoContainer: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
     ...Platform.select({
       ios: {
-        shadowColor: 'black',
+        shadowColor: "black",
         shadowOffset: { height: -3 },
         shadowOpacity: 0.1,
-        shadowRadius: 3,
+        shadowRadius: 3
       },
       android: {
-        elevation: 20,
-      },
+        elevation: 20
+      }
     }),
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 20,
+    alignItems: "center",
+    backgroundColor: "#fbfbfb",
+    paddingVertical: 20
   },
   tabBarInfoText: {
     fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    textAlign: 'center',
+    color: "rgba(96,100,109, 1)",
+    textAlign: "center"
   },
   navigationFilename: {
-    marginTop: 5,
+    marginTop: 5
   },
   helpContainer: {
     marginTop: 15,
-    alignItems: 'center',
+    alignItems: "center"
   },
   helpLink: {
-    paddingVertical: 15,
+    paddingVertical: 15
   },
   helpLinkText: {
     fontSize: 14,
-    color: '#2e78b7',
-  },
+    color: "#2e78b7"
+  }
 });
