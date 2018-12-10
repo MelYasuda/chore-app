@@ -58,7 +58,14 @@ export default class HomeScreen extends React.Component {
           <View>
             <FlatList
               data={this.state.choreList}
-              renderItem={({item}) => <Text>{item.day}</Text>}
+              renderItem={({item}) => 
+              <Text>
+                {item.day}
+                <FlatList
+                data={item}
+                renderItem={}
+                />
+              </Text>}
             />
           </View>
         </ScrollView>
