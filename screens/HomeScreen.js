@@ -1,3 +1,5 @@
+<script src="http://localhost:8097"></script>
+
 import React from "react";
 import {
   Image,
@@ -7,19 +9,70 @@ import {
   Text,
   TouchableOpacity,
   FlatList,
-  View
+  View,
+  SectionList
 } from "react-native";
 import { WebBrowser } from "expo";
 import { List, ListItem, Header } from "react-native-elements";
 
 import { MonoText } from "../components/StyledText";
 
+class SectionListItem extends React.Component {
+  render() {
+    return(
+      <View style={{
+                flex: 1,
+                flexDirection: 'column',
+                backgroundColor: 'rgb(98, 197, 184)'
+            }}>
+            <Text style={{
+                    fontSize: 16,
+                    fontWeight: 'bold',
+                    color: 'rgb(173, 252, 250)',
+                    marginLeft: 20,
+                    marginRight: 10,
+
+                }}>{this.props.item.desc}
+            </Text>
+            <Text style={{
+                    fontSize: 16,
+                    fontWeight: 'bold',
+                    color: 'rgb(173, 252, 250)',
+                    marginLeft: 20,
+                    marginRight: 10,
+
+                }}>{this.props.item.assignedName}
+            </Text>
+      </View>
+    )
+  }
+}
+
+class SectionHeader extends React.Component {
+
+  render() {
+      return (
+          <View style={{
+              flex: 1,
+              backgroundColor: 'rgb(77,120, 140)',
+          }}>
+              <Text style={{
+                  fontSize: 16,
+                  fontWeight: 'bold',
+                  color: 'white',
+                  margin: 20
+              }}>{this.props.section.title}
+              </Text>
+          </View>
+      );
+  }
+}
+
 export default class HomeScreen extends React.Component {
-  state = {
-    choreList: [
+    choreList = [
       {
-        day: "Sunday",
-        chores: [
+        title: "Sunday",
+        data: [
           {
             desc: "Laundry",
             assignedName: "Meguru",
@@ -32,76 +85,20 @@ export default class HomeScreen extends React.Component {
             priority: "Medium",
             note: "Use pods"
           }
-        ]
+        ],
       },
       {
-        day: "Monday",
-        chores: [
+        title: "Monday", 
+        data: [
           {
             desc: "Cook Dinner",
             assignedName: "Meguru",
             priority: "High",
             note: "Make it yummy"
           }
-        ]
+        ],
       },
-      {
-        day: "Tuesday",
-        chores: [
-          {
-            desc: "Cook Dinner",
-            assignedName: "Meguru",
-            priority: "High",
-            note: "Make it yummy"
-          }
-        ]
-      },
-      {
-        day: "Wednesday",
-        chores: [
-          {
-            desc: "Cook Dinner",
-            assignedName: "Meguru",
-            priority: "High",
-            note: "Make it yummy"
-          }
-        ]
-      },
-      {
-        day: "Thursday",
-        chores: [
-          {
-            desc: "Cook Dinner",
-            assignedName: "Meguru",
-            priority: "High",
-            note: "Make it yummy"
-          }
-        ]
-      },
-      {
-        day: "Friday",
-        chores: [
-          {
-            desc: "Cook Dinner",
-            assignedName: "Meguru",
-            priority: "High",
-            note: "Make it yummy"
-          }
-        ]
-      },
-      {
-        day: "Saturday",
-        chores: [
-          {
-            desc: "Cook Dinner",
-            assignedName: "Meguru",
-            priority: "High",
-            note: "Make it yummy"
-          }
-        ]
-      }
     ]
-  };
 
   static navigationOptions = {
     header: null
@@ -117,12 +114,20 @@ export default class HomeScreen extends React.Component {
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
         >
-          <View>
-            <List>
-              {this.state.choreList.map(chore => (
-                <ListItem key={chore.day} title={chore.day} />
-              ))}
-            </List>
+          <View style={{ flex: 1, marginTop: Platform.OS === 'ios' ? 34 : 0 }}>
+            <SectionList
+            renderItem={({ item, index }) => {
+              return (<SectionListItem item={item} index={index}>
+
+                </SectionListItem>);
+            }}
+            renderSectionHeader={({ section }) => {
+                        return (<SectionHeader section={section} />);
+                    }}
+            sections={this.choreList}
+            keyExtractor={(item, index) => item.name}
+            >
+            </SectionList>
           </View>
         </ScrollView>
       </View>
