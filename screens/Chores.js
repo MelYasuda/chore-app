@@ -1,4 +1,4 @@
-<script src="http://localhost:8097"></script>
+{/* <script src="http://localhost:8097"></script>
 
 import React from "react";
 import {
@@ -277,4 +277,4 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#2e78b7"
   }
-});
+}); */}

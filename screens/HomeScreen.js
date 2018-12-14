@@ -1,4 +1,4 @@
-import React, { Component } from 'react-native';
+import React from "react";
 import Accordion from 'react-native-collapsible/Accordion';
  
 const SECTIONS = [
@@ -12,7 +12,7 @@ const SECTIONS = [
   }
 ];
  
-class AccordionView extends Component {
+class AccordionView extends React.Component {
   state = {
     activeSections: []
   };
