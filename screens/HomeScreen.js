@@ -1,4 +1,9 @@
 import React from "react";
+import {
+  Text,
+  View,
+} from "react-native";
+import { WebBrowser } from "expo";
 import Accordion from 'react-native-collapsible/Accordion';
  
 const SECTIONS = [
